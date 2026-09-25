@@ -1,0 +1,29 @@
+name: Bug report
+description: Report something that is not working as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Before submitting, remove any private release notes or repository details from screenshots and examples.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the result you expected and what you saw instead.
+      placeholder: When I paste a heading and three bullets...
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: 1. Paste sample notes 2. Change theme 3. Download PNG
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Firefox 128, Chrome 128, Safari 18
+    validations:
+      required: false

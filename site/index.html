@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fbf8f2" />
+    <meta name="description" content="Make beautiful release cards from Markdown, public GitHub releases, or hand-picked README sections. Free, open source, and private by default." />
+    <title>Release Studio — Give your launch its moment</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='20' fill='%235b4acb'/%3E%3Cpath d='M17 42 32 15l15 27-15 8z' fill='%23e6ff96'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css?v=7" />
+    <script src="./app.js?v=7" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Release Studio home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><path d="M14 3 25 14 14 25 3 14 14 3Z" fill="currentColor"/><path d="m10 14 3 3 6-7" stroke="#5746c9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="brand-name">release<span>studio</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#how-it-works">How it works</a>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <span class="open-source-pill"><span aria-hidden="true">✳</span> Open source & free</span>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-star" aria-hidden="true">✳</span> A LITTLE STUDIO FOR BIG SHIP DAYS</p>
+          <h1 id="page-title">Your release<br />deserves a <span>little celebration.</span></h1>
+          <p class="hero-description">Turn the notes you already wrote into a launch card people will actually stop to read.</p>
+          <div class="hero-proof" aria-label="Product details">
+            <span><i class="proof-icon proof-spark" aria-hidden="true">✦</i> 16 original layouts</span>
+            <span><i class="proof-icon proof-lock" aria-hidden="true">◈</i> Private by default</span>
+            <span><i class="proof-icon proof-file" aria-hidden="true">↓</i> PNG + SVG</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-sun"></div>
+          <div class="hero-confetti confetti-one">✳</div><div class="hero-confetti confetti-two">✦</div><div class="hero-confetti confetti-three">✳</div>
+          <div class="hero-card hero-card-back"><span>SHIPPED WITH CARE</span><i></i><i></i><i></i></div>
+          <div class="hero-card hero-card-front">
+            <div class="hero-card-top"><span class="hero-card-brand"><b>N</b> northstar</span><span class="hero-version">v2.4.0</span></div>
+            <p class="hero-card-kicker">A SMALL STEP FORWARD</p>
+            <strong>Better,<br />by design.</strong>
+            <div class="hero-card-chips"><span>✨ 3 new things</span><span>↗ ready to share</span></div>
+          </div>
+          <div class="hero-sticker"><span>100%</span><small>LOCAL<br />MAGIC</small></div>
+        </div>
+      </section>
+
+      <div class="step-ribbon" aria-label="Three steps">
+        <span><b>01</b> Add your release</span><i aria-hidden="true"></i>
+        <span><b>02</b> Pick a look</span><i aria-hidden="true"></i>
+        <span><b>03</b> Download & share</span>
+        <span class="time-note">A lovely card in about a minute</span>
+      </div>
+
+      <section class="studio-grid" id="studio" aria-label="Release card studio">
+        <section class="editor-panel panel" aria-labelledby="editor-title">
+          <div class="panel-topline"><span class="step-tag"><b>01</b> YOUR RELEASE</span><span class="private-tag"><span></span> Stays in your browser</span></div>
+          <div class="panel-title-row">
+            <div><h2 id="editor-title">Start with what you have.</h2><p>Paste notes, or grab them from GitHub.</p></div>
+            <span class="panel-doodle" aria-hidden="true">✎</span>
+          </div>
+
+          <div class="source-switch" role="group" aria-label="Choose a release source">
+            <button type="button" class="source-tab active" data-source-tab="markdown" aria-pressed="true"><span aria-hidden="true">✍</span> Paste notes</button>
+            <button type="button" class="source-tab" data-source-tab="github" aria-pressed="false"><span aria-hidden="true">⌘</span> GitHub URL</button>
+          </div>
+
+          <div class="source-panel" data-source-panel="markdown">
+            <div class="field-heading"><label for="release-notes">Release notes <span>MARKDOWN WORKS GREAT</span></label><div class="source-actions"><button class="quiet-button" id="clear-notes" type="button">Clear</button><button class="quiet-button sample-link" id="load-example" type="button">Try an example ↗</button></div></div>
+            <textarea id="release-notes" class="notes-input" rows="8" spellcheck="false" placeholder="# v1.4.0 — A short, lovely release title&#10;&#10;Tell people what got better.&#10;&#10;## Fresh from the oven&#10;- A useful new thing&#10;- Something now feels faster&#10;- A small fix that makes a big difference"></textarea>
+            <p class="field-note">We’ll find a title, a short intro, and up to three highlights. You can change everything.</p>
+            <p class="parse-status" id="parse-status" role="status" aria-live="polite">Start typing, paste your notes, or load the sample.</p>
+          </div>
+
+          <div class="source-panel github-panel" data-source-panel="github" hidden>
+            <label class="input-label" for="github-url">Public GitHub repository or release URL</label>
+            <div class="url-input-wrap"><span class="url-icon" aria-hidden="true">↗</span><input id="github-url" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://github.com/owner/repo" /><button id="import-release" class="import-button" type="button"><span>Fetch notes</span><span aria-hidden="true">→</span></button></div>
+            <p class="url-examples">A repository link fetches its latest release. If there isn’t one, you can choose sections from its README.</p>
+            <div class="url-actions">
+              <button class="example-url-button" id="fill-example-url" type="button">Fill a real example URL <span aria-hidden="true">↗</span></button>
+              <button class="example-url-button readme-button" id="fetch-readme" type="button">Pick from README sections <span aria-hidden="true">↗</span></button>
+            </div>
+            <p class="import-status" id="import-status" role="status" aria-live="polite">Public release notes and README sections are fetched from GitHub only when you ask.</p>
+            <section class="readme-picker" id="readme-picker" aria-labelledby="readme-picker-title" hidden>
+              <div class="readme-picker-heading">
+                <div><h3 id="readme-picker-title">Pick up to three sections</h3><p>We’ll use these to make an editable project card.</p></div>
+                <span class="readme-selection-count" id="readme-selection-count">0 / 3</span>
+              </div>
+              <div class="readme-section-list" id="readme-section-list" role="group" aria-label="README sections"></div>
+              <button class="button button-primary readme-use-button" id="use-readme-sections" type="button" disabled>Use selected sections <span aria-hidden="true">→</span></button>
+            </section>
+            <div class="privacy-note"><span aria-hidden="true">◈</span><span>No sign-in or token needed. Only public repositories can be read.</span></div>
+          </div>
+
+          <details class="details-editor" id="details-editor">
+            <summary><span class="details-icon" aria-hidden="true">✧</span><span><b>Fine-tune your card</b><small>Project name, title, summary and highlights</small></span><span class="details-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="details-fields">
+              <div class="form-grid">
+                <div class="field"><label for="project-name">Project name</label><input id="project-name" class="text-input" type="text" maxlength="28" placeholder="e.g. Northstar" autocomplete="off" /></div>
+                <div class="field"><label for="version">Version</label><input id="version" class="text-input" type="text" maxlength="20" placeholder="e.g. v1.4.0" autocomplete="off" /></div>
+              </div>
+              <div class="field"><label for="card-title">Card title</label><input id="card-title" class="text-input" type="text" maxlength="62" placeholder="Release update" autocomplete="off" /></div>
+              <div class="field"><label for="summary">Short summary <span class="optional-label">Optional</span></label><textarea id="summary" class="summary-input" rows="2" maxlength="150" placeholder="What should people know about this release?"></textarea></div>
+              <div class="field"><label for="highlights">Highlights <span class="field-caption" id="highlight-count">0 / 3</span></label><textarea id="highlights" class="summary-input highlights-input" rows="3" maxlength="240" placeholder="One highlight per line"></textarea><p class="field-note">One per line. Extra source notes stay untouched.</p></div>
+            </div>
+          </details>
+        </section>
+
+        <section class="preview-panel panel" aria-label="Live release card preview">
+          <div class="preview-toolbar">
+            <div class="preview-heading"><span class="preview-live-dot"></span><div><strong>Your card</strong><small>LIVE PREVIEW</small></div><span class="size-chip">1200 × 630</span></div>
+            <div class="export-actions">
+              <button class="button button-quiet" id="export-svg" type="button" disabled><span aria-hidden="true">↓</span> SVG</button>
+              <button class="button button-primary" id="export-png" type="button" disabled><span aria-hidden="true">↓</span> Download PNG</button>
+            </div>
+          </div>
+
+          <div class="preview-stage" id="preview-stage">
+            <div class="empty-state" id="empty-state">
+              <div class="empty-art" aria-hidden="true"><div class="empty-spark">✳</div><div class="empty-sheet"><i></i><i></i><i></i></div></div>
+              <h3>Your next release, looking lovely.</h3>
+              <p>Add a few notes and your card appears right here.</p>
+              <button class="empty-example-button" id="preview-example" type="button">Show me an example <span aria-hidden="true">→</span></button>
+            </div>
+            <article class="release-card theme-dark" id="release-card" aria-label="Release announcement card" hidden>
+              <div class="card-texture" aria-hidden="true"></div>
+              <div class="card-art" aria-hidden="true"><span class="art-shape art-one"></span><span class="art-shape art-two"></span><span class="art-shape art-three"></span><span class="art-scribble"></span></div>
+              <div class="card-content">
+                <header class="card-header">
+                  <div class="card-project"><span class="project-mark" id="project-mark">R</span><span class="project-title" id="preview-project"></span></div>
+                  <span class="version-badge" id="preview-version"></span>
+                </header>
+                <section class="card-copy">
+                  <p class="card-eyebrow"><span></span><span id="preview-eyebrow">THE LATEST & GREATEST</span></p>
+                  <h2 class="card-title" id="preview-title"></h2>
+                  <p class="card-summary" id="preview-summary"></p>
+                  <ul class="card-highlights" id="preview-highlights"></ul>
+                  <p class="omitted-note" id="omitted-note" hidden></p>
+                </section>
+                <footer class="card-footer"><span id="preview-repo"></span><span class="footer-mark"><span class="footer-glyph">✳</span> RELEASE STUDIO</span></footer>
+              </div>
+              <img class="release-card-image" id="preview-image" alt="" aria-hidden="true" />
+            </article>
+          </div>
+
+          <div class="appearance-bar">
+            <div class="theme-switch" role="group" aria-label="Card background brightness">
+              <button class="theme-button active" type="button" data-theme="dark" aria-pressed="true"><span aria-hidden="true">◐</span> Dark</button>
+              <button class="theme-button" type="button" data-theme="light" aria-pressed="false"><span aria-hidden="true">☼</span> Light</button>
+            </div>
+            <label class="accent-control" for="accent-color"><span>Make it yours</span><span class="accent-picker-wrap"><input id="accent-color" type="color" value="#c9f27d" aria-label="Choose card accent color" /></span></label>
+            <span class="export-size-note"><span aria-hidden="true">◈</span> Crisp at every size</span>
+          </div>
+        </section>
+      </section>
+
+      <section class="template-section" aria-labelledby="template-title">
+        <div class="template-heading-row">
+          <div><span class="step-tag"><b>02</b> THE FUN PART</span><h2 id="template-title">Pick the mood.</h2><p>These aren’t color swaps. Each one gives your story a different shape.</p></div>
+          <span class="template-count"><b id="preset-count">16</b> made-by-hand designs <span aria-hidden="true">✦</span></span>
+        </div>
+        <div class="preset-filters" role="group" aria-label="Filter designs">
+          <button class="filter-chip active" type="button" data-filter="all" aria-pressed="true">All <span>16</span></button>
+          <button class="filter-chip" type="button" data-filter="bold" aria-pressed="false">Big energy</button>
+          <button class="filter-chip" type="button" data-filter="editorial" aria-pressed="false">Editorial</button>
+          <button class="filter-chip" type="button" data-filter="playful" aria-pressed="false">Playful</button>
+          <button class="filter-chip" type="button" data-filter="technical" aria-pressed="false">For the builders</button>
+        </div>
+        <div class="preset-grid" id="preset-grid" role="group" aria-label="Release card designs"></div>
+      </section>
+
+      <section class="how-to" id="how-it-works" aria-labelledby="how-title">
+        <div class="how-intro"><p class="eyebrow"><span class="eyebrow-star" aria-hidden="true">✳</span> NO DESIGN DEGREE REQUIRED</p><h2 id="how-title">From “shipped it” to <span>show it off.</span></h2><p>Your work deserves a better announcement than another wall of text.</p></div>
+        <ol class="how-steps">
+          <li><span class="how-number">01</span><div><strong>Bring your notes</strong><p>Paste Markdown or import a public GitHub release URL.</p></div><span class="how-doodle" aria-hidden="true">↙</span></li>
+          <li><span class="how-number">02</span><div><strong>Pick your personality</strong><p>Choose a proper layout, tune the words and colors.</p></div><span class="how-doodle" aria-hidden="true">✳</span></li>
+          <li><span class="how-number">03</span><div><strong>Share the good news</strong><p>Download a crisp image for your release or socials.</p></div><span class="how-doodle" aria-hidden="true">↗</span></li>
+        </ol>
+      </section>
+
+      <footer class="page-footer"><a class="footer-brand" href="./">release<span>studio</span></a><span>Open source <i>✦</i> No login <i>✦</i> No data saved</span><span>Made for the moment you ship.</span></footer>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
